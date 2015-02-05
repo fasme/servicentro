@@ -37,13 +37,46 @@ public function nuevo2(){
 	{
 		$guia->fill($data);
 		$guia->save();
+		$id= $guia->id;
+		//return Redirect::to("guia");
+		$guia = Guia::find($guia->id);
 
-		return Redirect::to("guia");
+
+
+    $pdf = new \Thujohn\Pdf\Pdf();
+    $content = $pdf->load(View::make('guias.pdf')->with("guia",$guia))->output();
+    File::put('test/'.$guia->id.'.pdf', $content);
+
+PDF::clear();
+
+/*
+	 $html =  View::make("guias.pdf")->with("guia",$guia);
+
+for ($i=1;$i<=2;$i++)
+{
+      $content = PDF::load($html, 'A4', 'portrait')->output(); 
+       File::put(public_path('test'.$i.'.pdf'), $content);
+}
+*/
+
+	
+		
+
+		$path1 = '"C:\Archivos de programa\Adobe\Reader 11.0\Reader\AcroRd32.exe"';
+		$path2 = " D:/xampp/htdocs/servicentro/public/test/".$id.".pdf";
+		
+		$path = $path1.' /t '.$path2;
+        exec($path);
+		//return exec("whoami");
+       return Redirect::to("guia");
+
+
 	}
 	else
 	{
 		return Redirect::to("guia/nuevo")->withInput()->withErrors($guia->errors);
 	}
+
 
 	
 
