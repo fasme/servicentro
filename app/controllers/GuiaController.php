@@ -41,6 +41,8 @@ public function nuevo2(){
 		//return Redirect::to("guia");
 		$guia = Guia::find($guia->id);
 
+		
+
 
 /*
     $pdf = new \Thujohn\Pdf\Pdf();
