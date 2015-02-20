@@ -39,7 +39,7 @@ if ($mes=="December") $mes="Diciembre";
 
 <div style="position: absolute;top: 140px; left: 50px;">{{ date("d")}} </div>
 <div style="position: absolute;top: 140px; left: 150px;">{{ $mes}} </div>
-<div style="position: absolute;top: 140px; left: 270px;">{{ date("Y")}} </div>
+<div style="position: absolute;top: 140px; left: 300px;">{{ date("Y")}} </div>
 
 <div style="position: absolute;top: 155px; left: 50px;">{{$guia->cliente->nombre}}</div>
 <div style="position: absolute;top: 180px; left: 50px;">{{$guia->cliente->direccion}}</div>
@@ -49,9 +49,9 @@ if ($mes=="December") $mes="Diciembre";
 <div style="position: absolute;top: 180px; left: 310px;">{{$guia->cliente->comuna}}</div>
 
 
-<div style="position: absolute;top: 180px; left: 550 px;">{{$guia->cliente->rut}}</div>
-<div style="position: absolute;top: 200px; left: 550 px;">{{$guia->cliente->ciudad}}</div>
-<div style="position: absolute;top: 220px; left: 550 px;">{{$guia->cliente->telefono}}</div>
+<div style="position: absolute;top: 180px; left: 600 px;">{{$guia->cliente->rut}}</div>
+<div style="position: absolute;top: 200px; left: 600 px;">{{$guia->cliente->ciudad}}</div>
+<div style="position: absolute;top: 220px; left: 600 px;">{{$guia->cliente->telefono}}</div>
 
 
 
