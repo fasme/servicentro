@@ -1,7 +1,7 @@
 <?php
-class Guia extends Eloquent { //Todos los modelos deben extender la clase Eloquent
-    protected $table = 'guia';
-    protected $fillable = array('producto_id','cliente_id','cantidad','descripcion','precio','valorbencina');
+class Factura extends Eloquent { //Todos los modelos deben extender la clase Eloquent
+    protected $table = 'factura';
+    protected $fillable = array('cliente_id');
 
 
 
@@ -10,16 +10,11 @@ class Guia extends Eloquent { //Todos los modelos deben extender la clase Eloque
         return $this->belongsTo('Cliente');
     }
 
-    public function producto()
+    public function guia()
     {
-        return $this->belongsTo('Producto');
+        return $this->belongsToMany('Guia');
     }
 
-
-    public function factura()
-    {
-        return $this->belongsToMany('Factura');
-    }
 
 
 
@@ -28,10 +23,10 @@ public $errors;
     public function isValid($data) // funcion que valida los datos
     {
         $rules = array(
-            'producto_id' => 'exists:producto,id',
-            'cliente_id'     => 'exists:cliente,id',
             
-            'precio' => 'required|integer'
+            'cliente_id'     => 'exists:cliente,id',
+            "guiavalue" => "required",
+            
          
         );
         

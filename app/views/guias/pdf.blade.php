@@ -37,26 +37,26 @@ if ($mes=="November") $mes="Noviembre";
 if ($mes=="December") $mes="Diciembre";
 ?>
 
-<div style="position: absolute;top: 120px; left: 50px;">{{ date("d")}} </div>
-<div style="position: absolute;top: 120px; left: 150px;">{{ $mes}} </div>
-<div style="position: absolute;top: 120px; left: 250px;">{{ date("Y")}} </div>
+<div style="position: absolute;top: 140px; left: 50px;">{{ date("d")}} </div>
+<div style="position: absolute;top: 140px; left: 150px;">{{ $mes}} </div>
+<div style="position: absolute;top: 140px; left: 270px;">{{ date("Y")}} </div>
 
-<div style="position: absolute;top: 150px; left: 50px;">{{$guia->cliente->nombre}}</div>
+<div style="position: absolute;top: 155px; left: 50px;">{{$guia->cliente->nombre}}</div>
 <div style="position: absolute;top: 180px; left: 50px;">{{$guia->cliente->direccion}}</div>
-<div style="position: absolute;top: 210px; left: 50px;">{{$guia->cliente->giro}}</div>
+<div style="position: absolute;top: 200px; left: 50px;">{{$guia->cliente->giro}}</div>
 
 
-<div style="position: absolute;top: 180px; left: 300px;">{{$guia->cliente->comuna}}</div>
+<div style="position: absolute;top: 180px; left: 310px;">{{$guia->cliente->comuna}}</div>
 
 
-<div style="position: absolute;top: 180px; left: 500 px;">{{$guia->cliente->rut}}</div>
-<div style="position: absolute;top: 210px; left: 500 px;">{{$guia->cliente->ciudad}}</div>
-<div style="position: absolute;top: 240px; left: 500 px;">{{$guia->cliente->telefono}}</div>
+<div style="position: absolute;top: 180px; left: 550 px;">{{$guia->cliente->rut}}</div>
+<div style="position: absolute;top: 200px; left: 550 px;">{{$guia->cliente->ciudad}}</div>
+<div style="position: absolute;top: 220px; left: 550 px;">{{$guia->cliente->telefono}}</div>
 
 
 
-<div style="position: absolute;top: 400px; left: 50px;">{{$guia->cantidad." Lts"}}</div>
-<div style="position: absolute;top: 400px; left: 200px;">{{$guia->descripcion}}</div>
-<div style="position: absolute;top: 400px; left: 500 px;">{{$guia->valorbencina}}</div>
-<div style="position: absolute;top: 400px; left: 600px;">{{$guia->precio}}</div>
+<div style="position: absolute;top: 300px; left: 20px;">{{$guia->cantidad." Lts"}}</div>
+<div style="position: absolute;top: 300px; left: 200px;">{{$guia->descripcion}}</div>
+<div style="position: absolute;top: 300px; left: 600 px;">{{$guia->valorbencina}}</div>
+<div style="position: absolute;top: 300px; left: 700px;">{{$guia->precio}}</div>
 </html>

@@ -72,6 +72,19 @@ Route::group(array('before' => 'auth'), function()
 
 
 
+	// FACTURA
+
+	Route::get('factura', array('uses'=>'FacturaController@mostrar'));
+	Route::get('factura/nuevo', array('uses'=>'FacturaController@nuevo'));
+	Route::post('factura/crear', array('uses'=>'FacturaController@nuevo2'));
+	Route::get('factura/editar/{id}', array('uses'=>'FacturaController@editar'));
+	Route::post('factura/editar/{id}', array('uses'=>'FacturaController@editar2'));
+	Route::get('factura/eliminar', 'FacturaController@eliminar');
+	Route::get('factura/pdf/{id}', 'FacturaController@pdf');
+	Route::get('factura/buscarguias', array('uses'=>'FacturaController@buscarguias'));
+
+
+
 		
 
 

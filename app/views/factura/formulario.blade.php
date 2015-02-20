@@ -12,13 +12,13 @@
             </li>
 
             <li>
-              <a href={{ URL::to('guia') }}>guias</a>
+              <a href={{ URL::to('factura') }}>facturas</a>
 
               <span class="divider">
                 <i class="icon-angle-right arrow-icon"></i>
               </span>
             </li>
-            <li>Ver guia</li>
+            <li>Ver factura</li>
           </ul><!--.breadcrumb-->
 
           @stop
@@ -27,7 +27,7 @@
      
 <div class="page-header position-relative">
             <h1>
-              Crear guia
+              Crear Factura
               <small>
                 <i class="icon-double-angle-right"></i>
                 
@@ -55,10 +55,10 @@
            <?php
   // si existe el usuario carga los datos
     if ($guia->exists):
-        $form_data = array('url' => 'guia/editar/'.$guia->id);
+        $form_data = array('url' => 'factura/editar/'.$guia->id);
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'guia/crear', 'target' =>'_blank');
+        $form_data = array('url' => 'factura/crear', 'target' =>'_blank');
         $action    = 'Crear';        
     endif;
 
@@ -69,19 +69,15 @@
        
           
             {{Form::label('Cliente', 'Cliente')}}
-            {{Form::select('cliente_id',$clientes, $guia->cliente_id,array('class'=>'clientes'))}}
+            {{Form::select('cliente_id',$clientes, $guia->cliente_id,array('class'=>'clientes', "id"=>"clientes"))}}
+            <br><br><br>
+            <small>Guias Pendientes</small>
+            <div id="mostarguias">
 
-            {{Form::label('Producto', 'Producto')}}
-            {{Form::select('producto_id',$productos, $guia->producto_id)}}
-
+            </div>
            
 
-            {{Form::label('Descripcion')}}
-            {{Form::text('descripcion', $guia->descripcion)}}
-
-            {{Form::label('$ Precio')}}
-            {{Form::text('precio', $guia->precio)}}
-             <small class="text-success">Valor en $</small>
+            
 
 
          
@@ -109,8 +105,34 @@ $('.input-mask-date').mask('99/99/9999');
 $('.input-mask-date2').mask('99/99/9999');
 
 
-$( "#guiaactive" ).addClass( "active" );
+$( "#facturaactive" ).addClass( "active" );
 $(".clientes").chosen(); 
+
+
+$("#clientes").change(function(){
+$("#mostarguias").empty();
+$.get("{{ url('factura/buscarguias')}}",
+      { option: $(this).val() },
+      function (data){ 
+  
+
+      if(data == ""){
+        $("#mostarguias").append("<small class='text-error'>No hay guias pendientes para este cliente</small>");
+        
+      }
+
+        $.each(data, function(key, element) {
+
+        
+          $("#mostarguias").append("<li><input type='hidden' name='guiavalue' value='1'><input type='hidden' name='guias[]' value='"+element.id+"'>Guia: "+element.id + " Total Guia: "+element.precio + "</li>");
+        });
+
+
+
+      }
+      );
+      
+});
     
   });   
 </script>

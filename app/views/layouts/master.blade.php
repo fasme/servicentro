@@ -520,6 +520,20 @@
 
 
 
+					<li id="facturaactive">
+						<a href={{url("factura")}} class="dropdown-toggle">
+							<i class="fa fa-list-alt"></i>
+					<span class="menu-text"> Factura </span>
+
+						
+						</a>
+
+						
+					</li>
+
+
+
+
 				</ul><!--/.nav-list-->
 
 				<div class="sidebar-collapse" id="sidebar-collapse">
