@@ -76,6 +76,9 @@
 
             {{Form::label('Impuesto Especifico')}}
             {{Form::text('impuesto', $producto->impuesto)}}
+
+            {{Form::label('Variable')}}
+            {{Form::text('variable', $producto->variable)}}
          
     
 

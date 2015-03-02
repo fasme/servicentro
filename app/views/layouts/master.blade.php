@@ -521,13 +521,30 @@
 
 
 					<li id="facturaactive">
-						<a href={{url("factura")}} class="dropdown-toggle">
+						<a href="" class="dropdown-toggle">
 							<i class="fa fa-list-alt"></i>
 					<span class="menu-text"> Factura </span>
-
+<b class="arrow fa fa-angle-down"></b>
 						
 						</a>
 
+						<ul class="submenu">
+							
+							<li>
+								<a href={{url("factura")}}>
+									<i class="fa fa-angle-double-right"></i>
+									Con guias
+								</a>
+							</li>
+							<li>
+								<a href={{ URL::to('facturasg') }}>
+									<i class="fa fa-angle-double-right"></i>
+									Sin guias
+								</a>
+							</li>
+
+							
+						</ul>
 						
 					</li>
 

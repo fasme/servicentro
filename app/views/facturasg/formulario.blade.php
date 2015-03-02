@@ -12,7 +12,7 @@
             </li>
 
             <li>
-              <a href={{ URL::to('guia') }}>guias</a>
+              <a href={{ URL::to('facturasg') }}>Factura sin guias</a>
 
               <span class="divider">
                 <i class="icon-angle-right arrow-icon"></i>
@@ -27,7 +27,7 @@
      
 <div class="page-header position-relative">
             <h1>
-              Crear guia
+              Crear Factura sin guia
               <small>
                 <i class="icon-double-angle-right"></i>
                 
@@ -54,11 +54,11 @@
 
            <?php
   // si existe el usuario carga los datos
-    if ($guia->exists):
-        $form_data = array('url' => 'guia/editar/'.$guia->id);
+    if ($factura->exists):
+        $form_data = array('url' => 'facturasg/editar/'.$factura->id);
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'guia/crear', 'target' =>'_blank');
+        $form_data = array('url' => 'facturasg/crear', 'target' =>'_blank');
         $action    = 'Crear';        
     endif;
 
@@ -69,23 +69,23 @@
        
           
             {{Form::label('Cliente', 'Cliente')}}
-            {{Form::select('cliente_id',$clientes, $guia->cliente_id,array('class'=>'clientes'))}}
+            {{Form::select('cliente_id',$clientes, $factura->cliente_id,array('class'=>'clientes'))}}
 
             {{Form::label('Producto', 'Producto')}}
-            {{Form::select('producto_id',$productos, $guia->producto_id)}}
+            {{Form::select('producto_id',$productos, $factura->producto_id)}}
 
              {{Form::label('Tipo de pago')}}
-            {{Form::select('tipopago',array("1"=>"Contado","2"=>"Credito"), $guia->tipopago)}}
+            {{Form::select('tipopago',array("1"=>"Contado","2"=>"Credito"), $factura->tipopago)}}
             
             {{Form::label('Fecha')}}
-            {{Form::text('fecha', $guia->fecha, array("class"=>"input-mask-date"))}}
+            {{Form::text('fecha', $factura->fecha, array("class"=>"input-mask-date"))}}
             <small class="text-success">dd/mm/aaaa</small>
 
             {{Form::label('Descripcion')}}
-            {{Form::text('descripcion', $guia->descripcion)}}
+            {{Form::text('descripcion', $factura->descripcion)}}
 
             {{Form::label('$ Precio')}}
-            {{Form::text('precio', $guia->precio)}}
+            {{Form::text('precio', $factura->precio)}}
              <small class="text-success">Valor en $</small>
 
 
@@ -114,7 +114,7 @@ $('.input-mask-date').mask('99/99/9999');
 $('.input-mask-date2').mask('99/99/9999');
 
 
-$( "#guiaactive" ).addClass( "active" );
+$( "#facturaactive" ).addClass( "active" );
 $(".clientes").chosen(); 
     
   });   

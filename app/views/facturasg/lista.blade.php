@@ -20,7 +20,7 @@
                 <i class="fa fa-angle-right arrow-fa fa"></i>
               </span>
             </li>
-            <li>Ver Guias</li>
+            <li>Ver Facturas sin guias</li>
           </ul><!--.breadcrumb-->
 
           @stop
@@ -32,8 +32,9 @@
 
 
         <h1>
-  Guias de despacho
-
+Facturas Sin guias
+<a class="btn  btn-success" href={{url("facturasg/nuevo")}}>
+  <i class="fa fa-plus-circle fa-2x pull-left"></i> Añadir</a> 
 </h1>
 
         
@@ -58,24 +59,24 @@
         <tbody>
 
 
-  @foreach($guias as $guia)
+  @foreach($facturas as $factura)
            <tr>
 <?php 
-$impuestoespecifico = round($guia->cantidad*$guia->impuesto);
-$variable = round($guia->cantidad*$guia->variable);
-$neto = round(($guia->precio - $impuestoespecifico - $variable) / 1.19);
+$impuestoespecifico = round($factura->cantidad*$factura->impuesto);
+$variable = round($factura->cantidad*$factura->variable);
+$neto = round(($factura->precio - $impuestoespecifico - $variable) / 1.19);
 $iva = round($neto *0.19);
 ?>
-             <td> {{ $guia->producto->nombre}}</td>
-            <td> {{  $guia->cliente->nombre }} </td>
-             <td> {{  $guia->descripcion }} </td>
-            <td> {{ $guia->cantidad}}</td>
+             <td> {{ $factura->producto->nombre}}</td>
+            <td> {{  $factura->cliente->nombre }} </td>
+             <td> {{  $factura->descripcion }} </td>
+            <td> {{ $factura->cantidad}}</td>
             <td>{{$neto}}</td>
            <td>{{$impuestoespecifico}}</td>
            <td>{{$variable}}</td>
            <td>{{$iva}}</td>
-            <td> {{ $guia->precio}}</td>
-            <td> {{ $guia->valorbencina}}</td>
+            <td> {{ $factura->precio}}</td>
+            <td> {{ $factura->valorbencina}}</td>
          
 
 
@@ -83,15 +84,15 @@ $iva = round($neto *0.19);
                        
                       
 
-                          <a class="green" href= {{ 'guia/editar/'.$guia->id }}>
+                          <a class="green" href= {{ 'facturasg/editar/'.$factura->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $guia->id }}>
+                         <a class="red bootbox-confirm" data-id={{ $factura->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
 
-                          <a class="blue" href= {{ 'guia/pdf/'.$guia->id }}>
+                          <a class="blue" href= {{ 'facturasg/pdf/'.$factura->id }}>
                             <i class="fa fa-file-pdf-o bigger-130"></i>
                           </a>
                       </td>
@@ -137,7 +138,7 @@ $('#example').DataTable( {
     } );
 
 
-$( "#guiaactive" ).addClass( "active" );
+$( "#facturaactive" ).addClass( "active" );
 
 
 
@@ -151,7 +152,7 @@ var tr = $(this).parents('tr');
               
            
              
-             $.get("{{ url('guia/eliminar')}}",
+             $.get("{{ url('facturasg/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }

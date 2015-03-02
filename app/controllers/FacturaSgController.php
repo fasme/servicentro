@@ -1,20 +1,20 @@
 <?php
-class GuiaController extends BaseController {
+class FacturaSgController extends BaseController {
 
 public function mostrar(){
 
-	$guias = Guia::all();
+	$facturas = Facturasg::all();
 
-	return View::make("guias.lista")->with("guias",$guias);
+	return View::make("facturasg.lista")->with("facturas",$facturas);
 
 }
 
 public function nuevo(){
 
-	$guia = new Guia;
+	$factura = new Facturasg;
 	$productos = Producto::all()->lists("nombre","id");
 	$clientes = Cliente::all()->lists("nombre","id");
-	return View::make("guias.formulario")->with("guia",$guia)->with("productos",$productos)->with("clientes",$clientes);
+	return View::make("facturasg.formulario")->with("factura",$factura)->with("productos",$productos)->with("clientes",$clientes);
 	//return "ho";
 }
 
@@ -24,7 +24,7 @@ public function nuevo2(){
 	// $proyectos = Proyecto::create(Input::all());
 
 	$data = Input::all();
-	$guia = new Guia;
+	$factura = new Facturasg;
 
 	$producto = Producto::find($data["producto_id"]);
 	$data["valorbencina"] = $producto->precio;
@@ -39,16 +39,16 @@ public function nuevo2(){
 
 
 
-	if($guia->isValid($data))
+	if($factura->isValid($data))
 	{
 		list($dia,$mes,$ano) = explode("/",$data['fecha']);
             $data['fecha'] = "$ano-$mes-$dia";
-            
-		$guia->fill($data);
-		$guia->save();
-		$id= $guia->id;
+
+		$factura->fill($data);
+		$factura->save();
+		$id= $factura->id;
 		//return Redirect::to("guia");
-		$guia = Guia::find($guia->id);
+		$factura = Facturasg::find($factura->id);
 
 		
 
@@ -68,13 +68,13 @@ $path1 = '"C:\Archivos de programa\Adobe\Reader 11.0\Reader\AcroRd32.exe"';
 
 */
 
-	 $html =  View::make("guias.pdf")->with("guia",$guia);
+	 $html =  View::make("facturasg.pdf")->with("factura",$factura);
 
 
        return PDF::load($html, 'A4', 'portrait')->show(); 
   
 
- Redirect::to("guia");
+ Redirect::to("facturasg");
 
 	
 		
@@ -87,7 +87,7 @@ $path1 = '"C:\Archivos de programa\Adobe\Reader 11.0\Reader\AcroRd32.exe"';
 	}
 	else
 	{
-		return Redirect::to("guia/nuevo")->withInput()->withErrors($guia->errors);
+		return Redirect::to("facturasg/nuevo")->withInput()->withErrors($guia->errors);
 	}
 
 
@@ -114,14 +114,6 @@ public function editar2($id){
 	$data = Input::all();
 	$guia = Guia::find($id);
 
-	$producto = Producto::find($data["producto_id"]);
-	$data["valorbencina"] = $producto->precio;
-
-	$data["cantidad"] = round($data["precio"]/$data["valorbencina"],3);
-
-	$data["impuesto"] = $producto->impuesto;
-
-	$data["variable"] = $producto->variable;
 
 	if($guia->isValid($data))
 	{
@@ -148,9 +140,9 @@ public function eliminar()
 
 public function pdf($id)
 {
-	$guia = Guia::find($id);
+	$factura = Facturasg::find($id);
 
-	 $html =  View::make("guias.pdf")->with("guia",$guia);
+	 $html =  View::make("facturasg.pdf")->with("factura",$factura);
 
       return PDF::load($html, 'A4', 'portrait')->show();
 

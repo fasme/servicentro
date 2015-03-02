@@ -1,6 +1,6 @@
 <?php
-class Guia extends Eloquent { //Todos los modelos deben extender la clase Eloquent
-    protected $table = 'guia';
+class Facturasg extends Eloquent { //Todos los modelos deben extender la clase Eloquent
+    protected $table = 'facturasg';
     protected $fillable = array('producto_id','cliente_id','cantidad','descripcion','precio','valorbencina','tipopago','impuesto','variable','fecha');
 
 

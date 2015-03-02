@@ -44,6 +44,7 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Impuesto Especifico</th>
+            <th>Variable</th>
   <th>Acciones</th>
             
           </tr>
@@ -57,6 +58,7 @@
              <td> {{ $producto->nombre}}</td>
             <td> {{  $producto->precio }} </td>
              <td> {{  $producto->impuesto }} </td>
+             <td> {{  $producto->variable }} </td>
 
 
   <td class="td-actions">

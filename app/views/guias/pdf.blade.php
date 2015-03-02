@@ -21,30 +21,34 @@ table, th, td{
 <html>
 <title>Guia de despacho </title>
 <?php
-$mes=date("F");
+$fecha = $guia->fecha;
 
-if ($mes=="January") $mes="Enero";
-if ($mes=="February") $mes="Febrero";
-if ($mes=="March") $mes="Marzo";
-if ($mes=="April") $mes="Abril";
-if ($mes=="May") $mes="Mayo";
-if ($mes=="June") $mes="Junio";
-if ($mes=="July") $mes="Julio";
-if ($mes=="August") $mes="Agosto";
-if ($mes=="September") $mes="Setiembre";
-if ($mes=="October") $mes="Octubre";
-if ($mes=="November") $mes="Noviembre";
-if ($mes=="December") $mes="Diciembre";
+list($ano,$mes,$dia) = explode("-",$fecha);
+
+
+if ($mes=="01") $mes="Enero";
+if ($mes=="02") $mes="Febrero";
+if ($mes=="03") $mes="Marzo";
+if ($mes=="04") $mes="Abril";
+if ($mes=="05") $mes="Mayo";
+if ($mes=="06") $mes="Junio";
+if ($mes=="07") $mes="Julio";
+if ($mes=="08") $mes="Agosto";
+if ($mes=="09") $mes="Setiembre";
+if ($mes=="10") $mes="Octubre";
+if ($mes=="11") $mes="Noviembre";
+if ($mes=="12") $mes="Diciembre";
 
 
 $impuestoespecifico = round($guia->cantidad*$guia->impuesto);
-$neto = round(($guia->precio - $impuestoespecifico) / 1.19);
+$variable = round($guia->cantidad*$guia->variable);
+$neto = round(($guia->precio - $impuestoespecifico - $variable) / 1.19);
 $iva = round($neto *0.19);
 ?>
 
-<div style="position: absolute;top: 140px; left: 50px;">{{ date("d")}} </div>
+<div style="position: absolute;top: 140px; left: 50px;">{{ $dia}} </div>
 <div style="position: absolute;top: 140px; left: 150px;">{{ $mes}} </div>
-<div style="position: absolute;top: 140px; left: 300px;">{{ date("Y")}} </div>
+<div style="position: absolute;top: 140px; left: 300px;">{{ $ano}} </div>
 
 <div style="position: absolute;top: 155px; left: 50px;">{{$guia->cliente->nombre}}</div>
 <div style="position: absolute;top: 180px; left: 50px;">{{$guia->cliente->direccion}}</div>

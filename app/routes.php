@@ -72,7 +72,7 @@ Route::group(array('before' => 'auth'), function()
 
 
 
-	// FACTURA
+	// FACTURA CON GUIAS
 
 	Route::get('factura', array('uses'=>'FacturaController@mostrar'));
 	Route::get('factura/nuevo', array('uses'=>'FacturaController@nuevo'));
@@ -83,8 +83,14 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('factura/pdf/{id}', 'FacturaController@pdf');
 	Route::get('factura/buscarguias', array('uses'=>'FacturaController@buscarguias'));
 
+	// FACTURA SIN GUIAS
 
 
+
+	Route::get('facturasg', array('uses'=>'FacturaSgController@mostrar'));
+	Route::get('facturasg/nuevo', array('uses'=>'FacturaSgController@nuevo'));
+	Route::post('facturasg/crear', array('uses'=>'FacturaSgController@nuevo2'));
+	Route::get('facturasg/pdf/{id}', 'FacturaSgController@pdf');
 		
 
 
