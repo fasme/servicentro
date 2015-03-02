@@ -47,6 +47,9 @@
             <th>Cliente</th>
             <th>Guias</th>
             <th>Total factura</th>
+            <th>Neto</th>
+            <th>Impuesto especifico</th>
+            <th>IVA</th>
             
   <th>Acciones</th>
             
@@ -58,16 +61,34 @@
   @foreach($facturas as $factura)
            <tr>
 
-             
+ 
             <td> {{  $factura->cliente->nombre }} </td>
             
             <?php $suma =0; ?>
+            <?php $neto =0; ?>
+            <?php $sumaneto =0; ?>
+            <?php $impuestoespecifico =0; ?>
+            <?php $sumaimpuestoespecifico =0; ?>
+            <?php $iva =0; ?>
+            <?php $sumaiva =0; ?>
             <td> @foreach ($factura->guia as $guia)
+              <?php
+              $impuestoespecifico = $guia->cantidad*$guia->impuesto;
+$neto = ($guia->precio - $impuestoespecifico) / 1.19;
+$iva = $neto *0.19;
+
+$sumaimpuestoespecifico += $impuestoespecifico; 
+$sumaneto += $neto; 
+$sumaiva += $iva; 
+?>
               {{$guia->id .","}}
              <?php $suma += $guia->precio; ?>
             @endforeach </td>
 
             <td> {{  $suma }} </td>
+            <td> {{  round($sumaneto) }} </td>
+             <td> {{  round($sumaimpuestoespecifico) }} </td>
+              <td> {{  round($sumaiva) }} </td>
 
          
 

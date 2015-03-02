@@ -54,12 +54,34 @@ if ($mes=="December") $mes="Diciembre";
 <div style="position: absolute;top: 220px; left: 550 px;">{{$factura->cliente->telefono}}</div>
 
 <?php $suma =0; ?>
+<?php $neto =0; ?>
+            <?php $sumaneto =0; ?>
+            <?php $impuestoespecifico =0; ?>
+            <?php $sumaimpuestoespecifico =0; ?>
+            <?php $iva =0; ?>
+            <?php $sumaiva =0; ?>
 
 <div style="position: absolute;top: 300px; left: 20px;">{{$factura->cantidad." "}}</div>
 <div style="position: absolute;top: 300px; left: 200px;">@foreach ($factura->guia as $guia)
-              {{"Guia N: ".$guia->id."- Valor: $".$guia->precio."<br>"}}
+             
              <?php $suma += $guia->precio; ?>
+
+                    <?php
+              $impuestoespecifico = $guia->cantidad*$guia->impuesto;
+$neto = ($guia->precio - $impuestoespecifico) / 1.19;
+$iva = $neto *0.19;
+
+$sumaimpuestoespecifico += $impuestoespecifico; 
+$sumaneto += $neto; 
+$sumaiva += $iva; 
+?>
+
+
             @endforeach</div>
 <div style="position: absolute;top: 300px; left: 600 px;">{{$factura->valorbencina}}</div>
-<div style="position: absolute;top: 300px; left: 700px;">{{ $suma }}</div>
+
+<div style="position: absolute;top: 320px; left: 700px;">{{ round($sumaimpuestoespecifico) }}</div>
+<div style="position: absolute;top: 340px; left: 700px;">{{ round($sumaneto) }}</div>
+<div style="position: absolute;top: 360px; left: 700px;">{{ round($sumaiva) }}</div>
+<div style="position: absolute;top: 380px; left: 700px;">{{ $suma }}</div>
 </html>

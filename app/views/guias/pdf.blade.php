@@ -35,6 +35,11 @@ if ($mes=="September") $mes="Setiembre";
 if ($mes=="October") $mes="Octubre";
 if ($mes=="November") $mes="Noviembre";
 if ($mes=="December") $mes="Diciembre";
+
+
+$impuestoespecifico = round($guia->cantidad*$guia->impuesto);
+$neto = round(($guia->precio - $impuestoespecifico) / 1.19);
+$iva = round($neto *0.19);
 ?>
 
 <div style="position: absolute;top: 140px; left: 50px;">{{ date("d")}} </div>

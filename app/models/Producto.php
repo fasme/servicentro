@@ -1,7 +1,7 @@
 <?php
 class Producto extends Eloquent { //Todos los modelos deben extender la clase Eloquent
     protected $table = 'producto';
-    protected $fillable = array('nombre','precio');
+    protected $fillable = array('nombre','precio','impuesto');
 
 
 

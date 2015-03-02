@@ -45,8 +45,10 @@
             <th>Cliente</th>
             <th>Descripcion</th>
             <th>Cantidad (lts)</th>
-           
-            <th>$ precio</th>
+            <th>Neto</th>
+            <th>Impuesto</th>
+            <th>IVA</th>
+            <th>Total</th>
              <th>Valor producto (al dia)</th>
   <th>Acciones</th>
             
@@ -57,12 +59,18 @@
 
   @foreach($guias as $guia)
            <tr>
-
+<?php 
+$impuestoespecifico = round($guia->cantidad*$guia->impuesto);
+$neto = round(($guia->precio - $impuestoespecifico) / 1.19);
+$iva = round($neto *0.19);
+?>
              <td> {{ $guia->producto->nombre}}</td>
             <td> {{  $guia->cliente->nombre }} </td>
              <td> {{  $guia->descripcion }} </td>
             <td> {{ $guia->cantidad}}</td>
-           
+            <td>{{$neto}}</td>
+           <td>{{$impuestoespecifico}}</td>
+           <td>{{$iva}}</td>
             <td> {{ $guia->precio}}</td>
             <td> {{ $guia->valorbencina}}</td>
          
@@ -95,6 +103,30 @@
 
 
 $('#example').DataTable( {
+   "columnDefs": [ 
+
+    {
+      "targets":3,
+      "render": $.fn.dataTable.render.number( '.', ',', 3, '' )
+    },
+    {
+      "targets":4,
+      "render": $.fn.dataTable.render.number( '.', ',', 0, '$' )
+    },
+    {
+      "targets":5,
+      "render": $.fn.dataTable.render.number( '.', ',', 0, '$' )
+    },
+    {
+      "targets":6,
+      "render": $.fn.dataTable.render.number( '.', ',', 0, '$' )
+    },
+    {
+      "targets":7,
+      "render": $.fn.dataTable.render.number( '.', ',', 0, '$' )
+    }
+
+     ],
         dom: 'T<"clear">lfrtip',
         tableTools: {
             "sSwfPath": "js/TableTools/swf/copy_csv_xls_pdf.swf"

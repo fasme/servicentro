@@ -1,7 +1,7 @@
 <?php
 class Cliente extends Eloquent { //Todos los modelos deben extender la clase Eloquent
     protected $table = 'cliente';
-    protected $fillable = array('nombre','direccion','comuna','rut','giro','ciudad','telefono');
+    protected $fillable = array('nombre','direccion','comuna','rut','giro','ciudad','telefono','vehiculo');
 
 
 

@@ -74,6 +74,8 @@
             {{Form::label('Producto', 'Producto')}}
             {{Form::select('producto_id',$productos, $guia->producto_id)}}
 
+             {{Form::label('Tipo de pago')}}
+            {{Form::select('tipopago',array("1"=>"Contado","2"=>"Credito"), $guia->tipopago)}}
            
 
             {{Form::label('Descripcion')}}

@@ -43,6 +43,7 @@
           <tr>
             <th>Nombre</th>
             <th>Precio</th>
+            <th>Impuesto Especifico</th>
   <th>Acciones</th>
             
           </tr>
@@ -55,6 +56,7 @@
 
              <td> {{ $producto->nombre}}</td>
             <td> {{  $producto->precio }} </td>
+             <td> {{  $producto->impuesto }} </td>
 
 
   <td class="td-actions">

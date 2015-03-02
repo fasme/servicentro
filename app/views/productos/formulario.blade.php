@@ -70,8 +70,12 @@
           
             {{Form::label('Nombre', 'Nombre')}}
             {{Form::text('nombre', $producto->nombre)}}
+
             {{Form::label('Precio', 'precio')}}
             {{Form::text('precio', $producto->precio)}}
+
+            {{Form::label('Impuesto Especifico')}}
+            {{Form::text('impuesto', $producto->impuesto)}}
          
     
 

@@ -88,6 +88,9 @@
             {{Form::label('Giro')}}
             {{Form::text('giro', $cliente->giro)}}
 
+            {{Form::label('Vehiculo')}}
+            {{Form::text('vehiculo', $cliente->vehiculo)}}
+
 
              {{Form::submit('Guardar', array('class'=>'btn btn-small btn-success'))}}
         {{ Form::close() }}

@@ -31,6 +31,10 @@ public function nuevo2(){
 
 	$data["cantidad"] = round($data["precio"]/$data["valorbencina"],3);
 
+	$data["impuesto"] = $producto->impuesto;
+
+
+
 
 
 	if($guia->isValid($data))
@@ -93,8 +97,10 @@ $path1 = '"C:\Archivos de programa\Adobe\Reader 11.0\Reader\AcroRd32.exe"';
 public function editar($id){
 
 	$guia = Guia::find($id);
+	$clientes = Cliente::all()->lists("nombre","id");
+	$productos = Producto::all()->lists("nombre","id");
 
-	return View::make("guias.formulario")->with("guia",$guia);
+	return View::make("guias.formulario")->with("guia",$guia)->with("clientes",$clientes)->with("productos",$productos);
 }
 
 public function editar2($id){

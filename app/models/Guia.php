@@ -1,7 +1,7 @@
 <?php
 class Guia extends Eloquent { //Todos los modelos deben extender la clase Eloquent
     protected $table = 'guia';
-    protected $fillable = array('producto_id','cliente_id','cantidad','descripcion','precio','valorbencina');
+    protected $fillable = array('producto_id','cliente_id','cantidad','descripcion','precio','valorbencina','tipopago','impuesto');
 
 
 
